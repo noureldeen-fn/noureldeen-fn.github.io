@@ -1,0 +1,677 @@
+:root {
+  --dark-color: #0a192f;
+  --mint-color: #00ffda;
+  --font-family: "Poppins", sans-serif;
+}
+
+/* 1. رجعنا الـ html لطبيعته شلنا منه أي كود غريب */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* 2. الـ body: ثبتنا الخلفية عشان تفضل حلوة وانت بتعمل سكرول */
+body {
+  font-family: "Outfit", sans-serif;
+  background: linear-gradient(
+    165deg,
+    var(--dark-color) 52%,
+    var(--mint-color) 51%
+  );
+  background-attachment: fixed; /* دي اللي بتثبت الخلفية */
+  min-height: 100vh;
+  color: #ffffff;
+  overflow-x: hidden; /* عشان مفيش حاجة تطلع بره بالعرض */
+}
+
+/* === تصميم شاشة التحميل (Preloader) === */
+#preloader {
+  background: #0a192f; /* نفس لون خلفية الموقع */
+  height: 100vh; /* يغطي الشاشة طول */
+  width: 100%; /* يغطي الشاشة عرض */
+  position: fixed; /* ثابت فوق كل حاجة */
+  top: 0;
+  left: 0;
+  z-index: 999999; /* أعلى طبقة في الموقع كله */
+  display: flex;
+  justify-content: center; /* يسنتر اللوجو */
+  align-items: center;
+}
+
+/* تنسيق اللوجو جوه البريلودر */
+.loader-content img {
+  width: 80px; /* حجم اللوجو */
+  animation: pulse 1.5s infinite; /* تشغيل أنيميشن النبض */
+}
+
+/* أنيميشن النبض (يكبر ويصغر وينور) */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2); /* يكبر شوية */
+    opacity: 0.7; /* يشف شوية */
+    filter: drop-shadow(0 0 10px #00ffda); /* وهج مينت */
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+section,
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+
+  /* ده السطر اللي بيخلي الصفحة تقف لوحدها (Animation) */
+  scroll-snap-align: start;
+}
+
+/* 1. تظبيط المسافة من فوق عشان العنوان ينزل */
+#about {
+  padding-top: 140px; /* نزلنا السكشن كله لتحت */
+}
+
+/* 2. تعديل العنوان (أول حرف كابيتال بس) */
+.section-title {
+  font-size: 2.5rem;
+  color: var(--mint-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: capitalize; /* دي اللي بتخلي أول حرف بس كابيتال */
+  letter-spacing: 2px;
+}
+
+/* 3. تعديل الكارت الزجاجي (غمقناه وقللنا الطول من تحت) */
+.glass-card {
+  /* السر هنا: غيرنا الخلفية لكحلي غامق شفاف عشان الكلام يبان */
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--mint-color); /* عملنا برواز سماوي شيك */
+  border-radius: 20px;
+  padding: 3rem 3rem 2rem 3rem; /* قللنا المسافة من تحت (الرقم التالت) */
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* تحسين لون النص */
+.about-content p {
+  color: #e6f1ff; /* أبيض ناصع ومريح للعين */
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* تلوين الكلمات المهمة (العريضة) باللون السماوي */
+.about-content strong {
+  color: var(--mint-color);
+}
+
+/* زرار الـ CV */
+.btn-main {
+  display: inline-block;
+  padding: 10px 30px;
+  background: transparent;
+  border: 2px solid var(--mint-color);
+  color: var(--mint-color);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s;
+  margin-top: 1rem;
+}
+
+.btn-main:hover {
+  background: var(--mint-color);
+  color: var(--dark-color);
+  box-shadow: 0 0 15px var(--mint-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.container {
+  padding: 0 8rem;
+}
+
+header {
+  background: var(--dark-color);
+  box-shadow: 0 4px 17px #ffffff1a;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+}
+
+/* تنسيق زرار الكونتاكت المميز */
+header ul li a.btn-contact {
+  border: 2px solid var(--mint-color);
+  padding: 8px 20px;
+  border-radius: 5px;
+  color: var(--mint-color);
+  transition: 0.3s;
+  margin-left: 25px;
+}
+
+header ul li a.btn-contact:hover {
+  background-color: var(--mint-color);
+  color: var(--dark-color); /* الكتابة تقلب كحلي */
+  box-shadow: 0 0 15px var(--mint-color); /* توهج */
+}
+
+.logo img {
+  width: 62px;
+  height: auto;
+  animation: leftSideAni 1s ease forwards;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  gap: 1.6rem;
+}
+
+ul li {
+  animation: navAni 1s ease forwards;
+  animation-delay: calc(0.1s * var(--navAni));
+}
+
+li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+li a:hover {
+  color: var(--mint-color);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  /* حساب الارتفاع عشان يملى الشاشة */
+  height: calc(100vh - 80px);
+}
+
+.detail h3 {
+  color: var(--mint-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  animation: topsideAni 1.5s ease forwards;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+}
+
+.detail h1 {
+  font-size: 3rem;
+  color: var(--dark-color);
+  font-weight: 700;
+  animation: topsideAni 1s ease forwards;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+}
+
+.images img {
+  width: 280px;
+  border-radius: 100%;
+  border: 3px solid var(--mint-color);
+  box-shadow: 0 0 5px #00ffda;
+  animation: leftSideAni 1.2s ease-in-out;
+  margin-left: 2rem;
+}
+
+/* تنسيق الأيقونات الجديد */
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 1.8rem;
+  margin-left: 1rem;
+}
+
+.social a {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: var(--dark-color); /* لون الأيقونة كحلي */
+  border: 1.6px solid var(--dark-color); /* البرواز كحلي */
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 45px; /* عرض ثابت */
+  height: 45px; /* ارتفاع ثابت */
+  padding: 0; /* شيلت ال padding عشان ال grid يسنطرها */
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  animation: socialAni 1s ease forwards;
+  animation-delay: calc(0.2s * var(--socialAni));
+}
+
+/* هنا التعديل المهم عشان اللون يقلب */
+.social a:hover {
+  /* الخلفية تقلب كحلي */
+  background-color: var(--dark-color);
+
+  /* الأيقونة والبرواز يقلبوا سماوي */
+  color: var(--mint-color);
+  border-color: var(--dark-color);
+
+  /* ده الشادو اللي أنت عايزه بالظبط (هالة نيون) */
+  box-shadow: 0 0 20px var(--dark-color);
+
+  /* الحركة الناعمة */
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-5px);
+}
+
+input#click,
+label.mainicon {
+  display: none;
+}
+
+/* --- Animations --- */
+@keyframes leftSideAni {
+  from {
+    opacity: 0;
+    transform: translate(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes navAni {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes topsideAni {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes socialAni {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Media Query للموبايل --- */
+@media (max-width: 768px) {
+  /* تعديلات مهمة عشان الموبايل */
+  body {
+    height: auto; /* اسمح للصفحة تطول براحتها */
+    overflow-y: auto; /* اسمح بالنزول والطلوع (Scroll) */
+    /* تغيير الخلفية في الموبايل عشان الكلام يبان */
+    background: linear-gradient(180deg, #0a192f 45%, #00ffda 45%);
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+    text-align: center;
+    height: auto; /* الارتفاع حسب المحتوى */
+    padding-bottom: 50px;
+    margin-top: 2rem;
+  }
+
+  .detail h1 {
+    font-size: 2rem; /* صغرنا الخط شوية للموبايل */
+    margin-left: 0;
+  }
+
+  .detail h3 {
+    margin-left: 0;
+  }
+
+  .images img {
+    margin: 2rem auto; /* سنترنا الصورة */
+    width: 200px; /* صغرنا الصورة شوية */
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  .social {
+    justify-content: center;
+    margin-left: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+/* --- تعديلات قسم Expertise --- */
+
+/* 1. تظبيط مسافة السكشن عشان العنوان ينزل وميلزقش فوق */
+#skills {
+  padding-top: 140px;
+}
+
+/* 2. الشبكة: توسيط ومسافات مضبوطة */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 3. الكارت: مربع ثابت ومحتوى متسنتر (Clean Version) */
+.skill-card {
+  background: rgba(10, 25, 47, 0.85);
+  border: 1px solid rgba(0, 255, 218, 0.1);
+  border-radius: 15px;
+
+  /* صغرنا الحجم لـ 150 عشان يبقى أشيك وميغطيش ع العنوان */
+  width: 150px;
+  height: 150px;
+
+  /* عشان الكلام والأيقونة يجوا في نص المربع بالظبط */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.3s ease;
+  cursor: default;
+}
+
+/* 4. الحركة لما تقف بالماوس */
+.skill-card:hover {
+  transform: translateY(-10px); /* يطلع لفوق */
+  border-color: var(--mint-color); /* البرواز ينور سماوي */
+  box-shadow: 0 0 20px rgba(0, 255, 218, 0.15); /* ظل سماوي خفيف */
+}
+
+/* 5. تنسيق الأيقونة */
+.skill-card i {
+  font-size: 3rem; /* صغرناها سنة بسيطة عشان تليق عالمربع */
+  color: var(--mint-color);
+  margin-bottom: 0.8rem;
+}
+
+/* 6. تنسيق اسم المهارة */
+.skill-card h3 {
+  font-size: 1rem; /* خط مناسب عشان الكلام الطويل ميكسرش */
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* قللنا المسافة من فوق شوية */
+#contact {
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+
+/* تنسيق الصف الجديد (عشان الاسم والإيميل ييجوا جنب بعض) */
+.form-row {
+  display: flex;
+  gap: 1rem; /* مسافة بينهم */
+}
+
+/* ضغطنا المسافات داخل الفورم */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* كانت 1.5rem خليناها 1rem بس */
+  width: 100%;
+}
+
+/* الكارت الزجاجي نفسه نصغر حوافه شوية */
+.contact-wrapper {
+  padding: 1rem; /* كانت 3rem */
+}
+
+/* خانات الكتابة */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px; /* صغرنا الـ padding جوه الخانة */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.95rem; /* صغرنا الخط سيكا */
+  outline: none;
+  transition: 0.3s;
+}
+
+/* تأكد إن الـ input-group واخد العرض الكامل */
+.input-group {
+  width: 100%;
+}
+
+.contact-text {
+  /* ... باقي الخصائص ... */
+  margin-bottom: 1.2rem; /* زود الرقم ده عشان يبعد عن الفورم */
+}
+
+/* وباقي الأكواد (الزرار والفوكس) زي ما هي... */
+
+/* زرار الإرسال */
+.btn-submit {
+  background: transparent;
+  border: 2px solid var(--mint-color);
+  color: var(--mint-color);
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 1rem;
+  width: fit-content; /* الزرار على قد الكلمة */
+  align-self: center; /* يجي في النص */
+}
+
+.btn-submit:hover {
+  background: var(--mint-color);
+  color: var(--dark-color);
+  box-shadow: 0 0 20px var(--mint-color);
+  transform: translateY(-3px);
+}
+/* --- تنسيقات قسم المشاريع (معدلة لكارت واحد قصير) --- */
+
+/* --- تنسيقات قسم Projects (المعدلة) --- */
+
+/* --- تنسيقات قسم Projects (النسخة الاحترافية المتساوية) --- */
+
+/* --- تنسيقات قسم Projects (Internal Scroll + Equal Heights) --- */
+
+/* 1. إعدادات السكشن الرئيسي: ثابت وممنوع يطول عن الشاشة */
+#projects {
+  height: 100vh; /* طول السكشن قد الشاشة بالظبط */
+  padding-top: 100px; /* مسافة عشان العنوان والناف بار */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* يبدأ رص العناصر من فوق */
+  align-items: center; /* يسنتر العناصر في النص */
+  overflow: hidden; /* يمنع السكشن نفسه إنه يعمل سكرول */
+}
+
+/* 2. الكونتينر: هو ده اللي هيحصل جواه السكرول الداخلي */
+.projects-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  /* بيخلي الكروت كلها نفس الطول غصب عنها */
+  align-items: stretch;
+
+  gap: 2rem;
+  width: 100%;
+  margin-top: 1.5rem;
+
+  /* === كود السكرول الداخلي === */
+  max-height: 64vh; /* أقصى ارتفاع للصندوق 80% من الشاشة */
+  overflow-y: auto; /* لو الكروت زادت، طلع سكرول رأسي */
+  padding-bottom: 60px; /* مسافة أمان تحت عشان آخر كارت ميبقاش لازق */
+  padding-right: 15px; /* مسافة يمين عشان شريط السكرول مياكلش المحتوى */
+  padding-top: 20px; /* مسافة عشان العنوان والناف بار */
+  scroll-snap-type: y mandatory;
+}
+
+/* === تجميل شريط السكرول (Scrollbar Styling) === */
+.projects-container::-webkit-scrollbar {
+  width: 16px; /*عرض الشريط*/
+}
+
+.projects-container::-webkit-scrollbar-track {
+  background: #0a192f;
+  border-radius: 10px;
+  margin-block: 40px;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+  background-color: var(--mint-color); /* لون "مينت" */
+  border: 5px solid #0a192f; /* عملنا برواز كحلي حوليه عشان يصغره */
+  border-radius: 20px; /* تدويرة ناعمة */
+}
+
+.projects-container::-webkit-scrollbar-thumb:hover {
+  border-width: 4px; /* يكبر سِنة صغيرة لما تمسكه (حركة تفاعلية) */
+}
+
+/* 3. تصميم الكارت (زي ما هو بالظبط) */
+.project-card {
+  background: rgba(10, 25, 47, 0.85);
+  border: 1px solid rgba(0, 255, 218, 0.1);
+  border-radius: 15px;
+  width: 350px;
+  overflow: hidden;
+  transition: 0.3s;
+
+  /* عشان نتحكم في توزيع المحتوى جوه الكارت */
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  scroll-margin-top: 20px;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--mint-color);
+  box-shadow: 0 10px 40px rgba(0, 255, 218, 0.2);
+}
+
+.project-img {
+  height: 160px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1.2rem;
+  text-align: center;
+
+  /* يمط عشان يملأ الفراغ */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-info h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.project-info p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: auto;
+}
+
+.btn-link {
+  color: var(--mint-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-link:hover {
+  text-shadow: 0 0 10px rgba(0, 255, 218, 0.5);
+}
+
+/* --- زرار الواتساب العايم --- */
+.whatsapp-btn {
+  position: fixed; /* يخليه ثابت في الشاشة */
+  bottom: 25px; /* المسافة من تحت */
+  right: 25px; /* المسافة من اليمين */
+  width: 50px; /* العرض */
+  height: 50px; /* الطول */
+  background-color: #25d366; /* لون واتساب الرسمي */
+  color: #fff; /* لون الأيقونة أبيض */
+  border-radius: 50%; /* يخليه مدور */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px; /* حجم الأيقونة */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* ظل خفيف */
+  z-index: 1000; /* يخليه فوق أي حاجة في الموقع */
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* حركة لما الماوس ييجي عليه */
+.whatsapp-btn:hover {
+  transform: scale(1.1); /* يكبر سنة بسيطة */
+  background-color: #20b857; /* يغمق سنة */
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); /* يعمل وهج أخضر */
+}
+
+.scroll-top-btn {
+  display: none;
+}

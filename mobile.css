@@ -1,0 +1,265 @@
+/* === ملف الموبايل فقط (mobile.css) === */
+
+/* 1. إعدادات الصفحة والألوان (Dark Theme للموبايل) */
+html,
+body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  background: #0a192f !important; /* كحلي سادة */
+}
+
+/* 2. تأمين العناصر من الخروج عن الشاشة */
+.container,
+section,
+header {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  width: 100% !important;
+}
+
+/* 3. تلوين النصوص عشان تبان في الخلفية الغامقة */
+h1,
+h2,
+h3,
+.section-title,
+span {
+  color: #00ffda !important; /* مينت */
+}
+p,
+li a {
+  color: #e6f1ff !important; /* أبيض */
+}
+
+/* 4. إظهار زرار القائمة (Checkbox) */
+.mainicon {
+  display: block !important;
+  color: #00ffda;
+  font-size: 1.8rem;
+  cursor: pointer;
+  position: relative !important;
+  z-index: 9999 !important;
+  right: 20px;
+  top: 25px;
+}
+
+/* 6. الهيرو سكشن (الصورة والكلام) */
+.main {
+  display: flex !important;
+  flex-direction: column-reverse !important; /* الصورة فوق */
+  height: auto !important;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.images img {
+  width: 200px !important;
+  height: 200px !important;
+  margin: 20px auto;
+  border-width: 3px !important;
+}
+
+.social {
+  justify-content: center;
+  margin-top: 20px;
+  display: flex;
+}
+
+/* 7. المهارات (شبكة ثنائية) */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.skill-card {
+  width: calc(50% - 15px) !important;
+  height: auto !important;
+  padding: 15px;
+  margin: 0;
+  flex-direction: column;
+}
+
+/* 8. المشاريع (تحرير السكرول) */
+#projects {
+  height: auto !important;
+  overflow: visible !important;
+  display: block !important;
+}
+
+.projects-container {
+  flex-direction: column !important;
+  overflow-y: visible !important;
+  max-height: none !important;
+  scroll-snap-type: none !important;
+  height: auto !important;
+  display: flex !important;
+  gap: 40px;
+}
+
+.project-card {
+  width: 100% !important;
+  max-width: 350px;
+  scroll-snap-align: none !important;
+  margin: 0 auto !important;
+}
+
+/* 9. التواصل (Contact) */
+.form-row {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.input-group {
+  width: 100% !important;
+  margin-bottom: 15px;
+}
+
+.contact-wrapper {
+  padding: 20px !important;
+  width: 100% !important;
+}
+
+/* 10. تلوين الأيقونات إجباري */
+.social a i {
+  color: #00ffda !important;
+}
+/* === إصلاح لون أيقونة الواتساب === */
+.whatsapp-btn i {
+  color: #ffffff !important; /* لون أبيض صريح */
+}
+.social a {
+  border-color: #00ffda !important;
+}
+.whatsapp-btn {
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+}
+/* === تعديل الناف بار (صغير + زرار يمين + زجاجي) === */
+
+/* 1. الهيدر نفسه (البرواز الخارجي) */
+header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: auto !important; /* صغرنا الارتفاع لـ 60 عشان يبقى شيك */
+
+  /* تأثير الزجاج */
+  background: rgba(10, 25, 47, 0.6) !important; /* شفافية متوسطة */
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid rgba(0, 255, 218, 0.1);
+
+  z-index: 9999;
+  padding: 15px 20px !important; /* لغينا البادينج عشان نتحكم فيه من جوه */
+  overflow: visible !important;
+}
+
+/* 2. الكونتينر الداخلي (عشان نفصل اللوجو عن الزرار) */
+.page-header {
+  display: flex !important;
+  justify-content: space-between !important; /* ده الأمر اللي بيرميهم ع الطروف */
+  align-items: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 20px !important; /* مسافة جانبية بس */
+}
+
+/* 3. تظبيط اللوجو */
+.logo img {
+  width: 40px !important; /* حجم مناسب للناف بار الجديد */
+  height: auto !important;
+  margin: 0 !important;
+}
+
+/* 4. تظبيط زرار القائمة (البرجر) */
+.mainicon {
+  position: static !important; /* سيب الفليكس يظبط مكانه */
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center;
+  color: #00ffda !important;
+  font-size: 1.6rem !important; /* صغرناه سنة بسيطة */
+  cursor: pointer;
+}
+
+/* عشان أول سكشن مايستخباش تحت الناف بار */
+body {
+  padding-top: 0 !important; /* سيبها 0 عشان الخلفية تبان تحت الناف بار الشفاف */
+}
+
+/* === زرار الصعود (شمال + موبايل فقط) === */
+.scroll-top-btn {
+  display: flex; /* عشان يظهر */
+  justify-content: center;
+  align-items: center;
+
+  position: fixed; /* ثابت في الشاشة */
+  bottom: 20px; /* المسافة من تحت */
+  left: 20px; /* المسافة من الشمال */
+
+  width: 45px;
+  height: 45px;
+  background-color: #00ffda; /* خلفية مينت */
+  border-radius: 50%; /* مدور */
+
+  z-index: 1000;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  /* إخفاء مبدئي (هيظهر لما نعمل سكرول) */
+  opacity: 0;
+  pointer-events: none; /* عشان محدش يدوس عليه وهو مخفي */
+  transition: all 0.4s ease;
+}
+
+/* لون السهم اللي جوه الزرار */
+.scroll-top-btn i {
+  color: #0a192f !important; /* لون كحلي عشان يبان ع الخلفية المينت */
+  font-size: 1.2rem;
+}
+
+/* كلاس هنضيفه بالجافا سكريبت عشان يظهر الزرار */
+.scroll-top-btn.show {
+  opacity: 1;
+  pointer-events: auto; /* دلوقتي ينفع تدوس عليه */
+  transform: translateY(0);
+}
+
+/* === القائمة المنفصلة (Fixed Overlay) === */
+.page-header ul {
+  position: fixed !important; /* تفك ارتباطها بالهيدر خالص */
+  top: 0 !important;
+  left: -100% !important; /* مخفية شمال */
+  width: 100% !important;
+  height: 100vh !important; /* تغطي الشاشة بالطول والعرض */
+
+  background: rgba(10, 25, 47, 0.98) !important; /* لون الخلفية */
+  z-index: 9990 !important; /* تحت زرار البرجر بشوية */
+
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* تبدأ رص العناصر من فوق */
+
+  padding-top: 100px !important; /* نفضي مكان فوق عشان اللوجو والزرار يبانوا */
+  gap: 30px; /* مسافات بين اللينكات */
+  transition: all 0.4s ease;
+}
+
+/* كود التشغيل (لما تدوس تفتح) */
+#click:checked ~ ul {
+  left: 0 !important;
+}
+
+/*لغي زرار البرجر (القائمة مؤقتاً)*/
+.mainicon {
+  display: none !important;
+}
