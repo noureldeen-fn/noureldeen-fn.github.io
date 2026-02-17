@@ -6,10 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Portfolio | Noureldeen Zayan</title>
+
     <link
       rel="shortcut icon"
       href="portfolioimg/logoremover-nz.png"
       type="image/png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
     />
 
     <link
@@ -31,8 +39,9 @@
     <header class="container">
       <div class="page-header">
         <div class="logo">
-          <!-- لوجو بسيط NZ -->
-          <img src="portfolioimg/logoremover-nz.png" alt="logo" />
+          <a href="#">
+            <img src="portfolioimg/logoremover-nz.png" alt="logo" />
+          </a>
         </div>
 
         <input type="checkbox" id="click" />
@@ -83,7 +92,7 @@
               <i class="fa-solid fa-envelope"></i>
             </a>
 
-            <a href="https://bento.me/nourelden" target="_blank">
+            <a href="https://linktr.ee/noureldeen.fn" target="_blank">
               <i class="fa-solid fa-link"></i>
             </a>
           </div>
@@ -112,7 +121,11 @@
               applications.
             </p>
 
-            <a href="#" class="btn-main">Download CV</a>
+            <a
+              href="https://docs.google.com/document/d/1RcHlj8YimIs9nusKXg3NO5C1XF1-tn2i2NpIKFdiMYc/export?format=pdf"
+              class="btn-main"
+              >Download CV</a
+            >
           </div>
         </div>
       </div>
@@ -183,8 +196,12 @@
             <div class="project-info">
               <h3>Personal Portfolio</h3>
               <p>
-                My official portfolio website featuring a modern glassmorphism
-                design.
+                A fully responsive personal brand platform featuring a
+                <strong>Glassmorphism UI</strong> and a unified
+                <strong>Design System</strong>. Engineered with custom
+                JavaScript for immersive interactions (Smart SVG Cursor, Bespoke
+                Scrollbar) and optimized performance with a
+                <strong>Mobile-First</strong> approach.
               </p>
               <div class="project-links">
                 <a
@@ -197,6 +214,44 @@
                 </a>
                 <a
                   href="https://github.com/noureldeen-fn/noureldeen-fn.github.io"
+                  target="_blank"
+                  class="btn-link"
+                >
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-img">
+              <img
+                src="portfolioimg/bode.jpg"
+                alt="BODE Real Estate Platform"
+              />
+            </div>
+
+            <div class="project-info">
+              <h3>BODE | Real Estate Investment Platform</h3>
+              <p>
+                A high-performance real estate brokerage platform featuring a
+                modern dark-themed UI. Built with
+                <strong>Tailwind CSS</strong> & <strong>JavaScript</strong>,
+                focusing on SEO optimization, lead generation, and resolving
+                complex deployment challenges on Vercel.
+              </p>
+
+              <div class="project-links">
+                <a
+                  href="https://www.bode-eg.com/"
+                  target="_blank"
+                  class="btn-link"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+                  Demo
+                </a>
+
+                <a
+                  href="https://github.com/noureldeen-fn/bode-eg.com"
                   target="_blank"
                   class="btn-link"
                 >
@@ -333,4 +388,21 @@
     </a>
     <script src="script.js"></script>
   </body>
+  <div class="cursor cursor-hidden">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5.5 3.5L11.5 21.5L14.5 14.5L21.5 11.5L5.5 3.5Z"
+        fill="#0a192f"
+        stroke="#00ffda"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
 </html>

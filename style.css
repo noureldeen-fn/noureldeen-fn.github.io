@@ -1,27 +1,78 @@
+/* === 1. متغيرات النظام (System Variables) === */
 :root {
-  --dark-color: #0a192f;
-  --mint-color: #00ffda;
-  --font-family: "Poppins", sans-serif;
+  /* --- ألوان البراند --- */
+  --dark-color: #0a192f; /* الكحلي */
+  --mint-color: #00ffda; /* المينت */
+  --white-color: #ffffff; /* الأبيض الصريح */
+  --text-color: #e6f1ff; /* أبيض مريح للعين (للقراءة) */
+
+  /* --- الخطوط (Typography) --- */
+  /* Poppins: للعناوين واللوجو */
+  --font-heading: "Poppins", sans-serif;
+  /* Inter: للنصوص والزراير (أوضح وأشيك) */
+  --font-body: "Inter", sans-serif;
 }
 
+/* === 2. إعدادات الصفحة (Body) === */
+body {
+  /* استخدمنا خط Inter للنصوص العادية */
+  font-family: var(--font-body);
+
+  /* لون النص الأساسي */
+  color: var(--white-color);
+
+  /* خلفية التدريج المائلة (زي ما هي بالظبط) */
+  background: linear-gradient(
+    165deg,
+    var(--dark-color) 52%,
+    var(--mint-color) 51%
+  );
+
+  background-attachment: fixed; /* تثبيت الخلفية */
+  min-height: 100vh;
+  overflow-x: hidden; /* منع الحركة الجانبية */
+  margin: 0; /* ضمان عدم وجود حواف بيضاء */
+}
+
+/* === 3. إعدادات العناوين (مهم جداً تضيفه تحت البودي) === */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* عشان العناوين تاخد شكل Poppins المميز */
+  font-family: var(--font-heading);
+  font-weight: 700; /* تخانة الخط */
+}
 /* 1. رجعنا الـ html لطبيعته شلنا منه أي كود غريب */
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
-/* 2. الـ body: ثبتنا الخلفية عشان تفضل حلوة وانت بتعمل سكرول */
-body {
-  font-family: "Outfit", sans-serif;
-  background: linear-gradient(
-    165deg,
-    var(--dark-color) 52%,
-    var(--mint-color) 51%
-  );
-  background-attachment: fixed; /* دي اللي بتثبت الخلفية */
-  min-height: 100vh;
-  color: #ffffff;
-  overflow-x: hidden; /* عشان مفيش حاجة تطلع بره بالعرض */
+/* === تظبيط شكل السكرول بار (Scrollbar Customization) === */
+
+/* عرض السكرول بار */
+::-webkit-scrollbar {
+  width: 12px; /* عرض متوسط ومناسب */
+}
+
+/* الخلفية (المسار اللي بيمشي فيه) */
+::-webkit-scrollbar-track {
+  background: #0a192f; /* نفس لون خلفية الموقع */
+}
+
+/* المقبض (الجزء اللي بتمسكه) */
+::-webkit-scrollbar-thumb {
+  background-color: #00ffda; /* لون المينت بتاعنا */
+  border-radius: 10px; /* تدوير الحواف */
+  border: 3px solid #0a192f; /* برواز كحلي عشان يفصله عن الخلفية ويبان شيك */
+}
+
+/* لما تقف عليه بالماوس */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #00cca4; /* يغمق سنة بسيطة */
 }
 
 /* === تصميم شاشة التحميل (Preloader) === */
@@ -544,7 +595,7 @@ label.mainicon {
   padding-bottom: 60px; /* مسافة أمان تحت عشان آخر كارت ميبقاش لازق */
   padding-right: 15px; /* مسافة يمين عشان شريط السكرول مياكلش المحتوى */
   padding-top: 20px; /* مسافة عشان العنوان والناف بار */
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */ /* تفعيل خاصية الالتقاط (Snap) */
 }
 
 /* === تجميل شريط السكرول (Scrollbar Styling) === */
@@ -580,7 +631,6 @@ label.mainicon {
   /* عشان نتحكم في توزيع المحتوى جوه الكارت */
   display: flex;
   flex-direction: column;
-  scroll-snap-align: start;
   scroll-margin-top: 20px;
 }
 
@@ -674,4 +724,59 @@ label.mainicon {
 
 .scroll-top-btn {
   display: none;
+}
+
+/* === تصميم حاوية الماوس الجديد === */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* عشان ميعطلش الكليك */
+  z-index: 99999999; /* فوق كل حاجة */
+  will-change: transform; /* تحسين الأداء */
+  transition: opacity 0.15s ease-out; /* نعومة في الظهور والاختفاء */
+}
+
+/* === تنسيق الـ SVG جوه الحاوية === */
+.cursor svg {
+  width: 32px; /* حجم مناسب للماوس */
+  height: 32px;
+  /* ظل خفيف عشان يفصله عن الخلفية لو الخلفية كحلي */
+  filter: drop-shadow(0 0 2px rgba(0, 255, 218, 0.3));
+}
+
+/* === كلاس الإخفاء (لما يطلع بره الصفحة) === */
+.cursor.cursor-hidden {
+  opacity: 0;
+}
+
+/* === تأثير الضغط (اختياري - لو عايز تشيله شيله) === */
+.cursor.click svg {
+  transform: scale(0.8); /* يصغر سنة لما تدوس */
+  transition: transform 0.1s;
+}
+/* === الإخفاء الإجباري للماوس (الحل النهائي) === */
+
+/* 1. إخفاء من كل العناصر */
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
+/* 2. دي الأهم: إخفاء لما تقف على أي حاجة (عشان نلغي اليد) */
+*:hover,
+*:active,
+*:focus {
+  cursor: none !important;
+}
+
+/* 3. تأكيد خاص للينكات والزراير والكروت والمدخلات */
+a,
+button,
+input,
+textarea,
+.skill-card,
+.btn {
+  cursor: none !important;
 }

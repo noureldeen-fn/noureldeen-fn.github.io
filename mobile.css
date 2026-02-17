@@ -263,3 +263,13 @@ body {
 .mainicon {
   display: none !important;
 }
+
+/* === إخفاء الماوس المخصص وإرجاع الطبيعي في الموبايل === */
+.cursor,
+.cursor2 {
+  display: none !important; /* يخفي الماوس اللي عملناه */
+}
+
+* {
+  cursor: auto !important; /* يرجع التعامل الطبيعي للتاتش */
+}
